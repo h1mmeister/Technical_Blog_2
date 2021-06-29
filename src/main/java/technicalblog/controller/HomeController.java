@@ -33,7 +33,7 @@ public class HomeController {
 
         // preparing the model object
         model.addAttribute("posts", posts);
-        
+
         return "index";
 
     }
