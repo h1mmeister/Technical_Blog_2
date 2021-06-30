@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+  <head th:replace="layout :: site-head">
+    <title>Spring MVC Application - Login</title>
+  </head>
+
+  <header th:replace="layout :: logged-out"></header>
+
+  <body>
+    <h2>Login:</h2>
+    <div class="container">
+      <form method="post" th:object="@{User}">
+        <label for="username">Username:</label>
+        <input type="text" id="username" />
+        <label for="password">Password:</label>
+        <input type="password" id="password" />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+  </body>
+</html>
