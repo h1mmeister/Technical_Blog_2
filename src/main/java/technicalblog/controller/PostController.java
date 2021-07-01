@@ -31,7 +31,8 @@ public class PostController {
     }
 
     @RequestMapping(value = "/posts/create", method = RequestMethod.POST)
-    public String createPost() {
+    public String createPost(Post newPost) {
+        postService.createPost(newPost);
         return "redirect:/posts";
     }
 }
