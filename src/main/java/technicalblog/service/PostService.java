@@ -3,7 +3,6 @@ package technicalblog.service;
 import org.springframework.stereotype.Service;
 import technicalblog.model.Post;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
