@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import technicalblog.model.Post;
 import technicalblog.service.PostService;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -20,7 +20,7 @@ public class HomeController {
     public String getAllPosts(Model model) {
 
         // call to PostService class using spring ioc
-        ArrayList<Post> posts = postService.getAllPosts();
+        List<Post> posts = postService.getAllPosts();
 
         // preparing the model object
         model.addAttribute("posts", posts);
