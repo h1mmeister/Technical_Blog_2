@@ -29,7 +29,7 @@ public class PostService {
 //        // adding the posts in the arraylist
 //        posts.add(post1);
 //        posts.add(post2);
-        
+
         Connection connection = null;
         try {
             Class.forName("org.postgresql.Driver");
