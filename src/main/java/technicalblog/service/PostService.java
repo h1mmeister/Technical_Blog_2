@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import technicalblog.model.Post;
 import technicalblog.repository.PostRepository;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +25,8 @@ public class PostService {
     }
 
     public void createPost(Post newPost) {
-
+        newPost.setDate(new Date());
+        postRepository.createPost(newPost);
+        System.out.println("New Post " + newPost );
     }
 }
