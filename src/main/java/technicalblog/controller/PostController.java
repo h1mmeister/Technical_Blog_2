@@ -19,7 +19,9 @@ public class PostController {
     // this will return all the posts of the logged in user
     @RequestMapping("/posts")
     public String getUserPosts(Model model) {
-        ArrayList<Post> posts = postService.getOnePost();
+        ArrayList<Post> posts = new ArrayList<>();
+        Post latestPost = postService.getLatestPost();
+        posts.add(latestPost);
         model.addAttribute("posts", posts);
         return "posts";
     }
