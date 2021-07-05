@@ -43,4 +43,39 @@ public class PostRepository {
 
         return newPost;
     }
+
+    // this will return the specific post as per the postId
+    public Post getPost(Integer postId){
+        EntityManager em = emf.createEntityManager();
+        return em.find(Post.class, postId);
+    }
+
+    // this will update the post after editing
+    public void updatePost(Post updatedPost){
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+            em.merge(updatedPost);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
+
+    // this will delete the post from the database
+    public void deletePost(Integer postId) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+            em.detach(postId);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
+
 }

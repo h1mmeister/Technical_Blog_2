@@ -17,6 +17,10 @@
         <div>
           <p th:text="${p.body}"></p>
         </div>
+        <div>
+          <a th:href="@{/editPost(postId=${p.id})}">Edit</a>
+
+        </div>
       </post>
     </main>
   </body>
