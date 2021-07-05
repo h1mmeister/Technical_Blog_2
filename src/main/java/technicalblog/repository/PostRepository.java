@@ -71,7 +71,8 @@ public class PostRepository {
 
         try {
             transaction.begin();
-            em.detach(postId);
+            Post post = em.find(Post.class, postId);
+            em.remove(post);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
