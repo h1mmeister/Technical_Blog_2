@@ -1,10 +1,27 @@
 package technicalblog.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
 
     // characteristics of User object
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    // this is how we will map users table with user_profile table
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private UserProfile profile;
 
     // getters and setters
     public String getUsername() {
@@ -21,5 +38,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

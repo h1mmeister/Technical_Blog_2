@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
+
     <head th:replace="layout :: site-head">
         <title>Technical Blog Application</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
 
     <header th:replace="layout :: logged-out"></header>
 
-    <body>
-        <h1>All Technical Posts:</h1>
-        <main id="posts">
-            <post th:each="p : ${posts}">
-                <h2 th:text="${p.title}"></h2>
-                <i>Posted on: </i> <span th:text="${p.date}"></span>
-                <div>
-                    <p th:text="${p.body}"></p>
-                </div>
-            </post>
-        </main>
+ <div class="container">
+     <body>
+     <h1>All Technical Posts:</h1>
+     <main id="posts">
+         <post th:each="p : ${posts}">
+             <h2 th:text="${p.title}"></h2>
+             <i>Posted on: </i> <span th:text="${p.date}"></span>
+             <div>
+                 <p th:text="${p.body}"></p>
+             </div>
+         </post>
+     </main>
 
-    </body>
+     </body>
+ </div>
 </html>
