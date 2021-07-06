@@ -19,7 +19,7 @@ public class User {
     private String password;
 
     // this is how we will map users table with user_profile table
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id")
     private UserProfile profile;
 
