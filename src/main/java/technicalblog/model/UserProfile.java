@@ -11,9 +11,6 @@ public class UserProfile {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "full_name")
-    private String fullName;
-
     @Column(name = "email_address")
     private String emailAddress;
 
@@ -28,13 +25,6 @@ public class UserProfile {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public String getEmailAddress() {
         return emailAddress;
