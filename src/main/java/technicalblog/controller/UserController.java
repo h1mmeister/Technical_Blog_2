@@ -42,7 +42,8 @@ public class UserController {
     // when the user click on the login button submitting the form details
     @RequestMapping(value ="/users/login", method = RequestMethod.POST)
     public String loginUser(User user) {
-        if (userService.login(user)) {
+        User existingUser = userService.login(user);
+        if (existingUser != null) {
             return "redirect:/posts";
         } else {
             return "users/login";

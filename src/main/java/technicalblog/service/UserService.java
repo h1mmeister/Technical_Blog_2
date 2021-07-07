@@ -13,11 +13,12 @@ public class UserService {
     private UserRepository repository;
 
     // checking whether the username is "himanshu" or not for successful login
-    public boolean login(User user) {
-        if (user.getUsername().equals("himanshu")) {
-            return true;
+    public User login(User user) {
+        User existingUser = repository.checkUser(user.getUsername(), user.getPassword());
+        if (existingUser != null) {
+            return existingUser;
         } else {
-            return false;
+            return null;
         }
     }
 
