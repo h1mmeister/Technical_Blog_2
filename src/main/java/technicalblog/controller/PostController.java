@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import technicalblog.model.Post;
+import technicalblog.model.User;
 import technicalblog.service.PostService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -33,7 +35,9 @@ public class PostController {
 
     // this is to create a new post when the user is logged in
     @RequestMapping(value = "/posts/create", method = RequestMethod.POST)
-    public String createPost(Post newPost) {
+    public String createPost(Post newPost, HttpSession session) {
+        User user = (User) session.getAttribute("loggeduser");
+        newPost.setUser(user);
         postService.createPost(newPost);
 
         return "redirect:/posts";
@@ -49,7 +53,9 @@ public class PostController {
     }
 
     @RequestMapping(value = "/editPost", method = RequestMethod.PUT)
-    public String editPostSubmit(@RequestParam(name="postId") Integer postId, Post updatedPost) {
+    public String editPostSubmit(@RequestParam(name="postId") Integer postId, Post updatedPost, HttpSession session) {
+        User user = (User) session.getAttribute("loggeduser");
+        updatedPost.setUser(user);
         updatedPost.setId(postId);
         postService.updatePost(updatedPost);
 
