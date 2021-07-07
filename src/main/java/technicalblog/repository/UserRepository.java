@@ -27,11 +27,16 @@ public class UserRepository {
 
     // this will check the user in the database whether we have the user present in the database or not
     public User checkUser(String username, String password) {
-        EntityManager em = emf.createEntityManager();
-        TypedQuery<User> typedQuery = em.createQuery("SELECT u FROM User u WHERE u.username = :username AND u.password = :password", User.class);
-        typedQuery.setParameter("username", username);
-        typedQuery.setParameter("password", password);
+        try {
+            EntityManager em = emf.createEntityManager();
+            TypedQuery<User> typedQuery = em.createQuery("SELECT u FROM User u WHERE u.username = :username AND u.password = :password", User.class);
+            typedQuery.setParameter("username", username);
+            typedQuery.setParameter("password", password);
 
-       return typedQuery.getSingleResult();
+            return typedQuery.getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+
     }
 }
